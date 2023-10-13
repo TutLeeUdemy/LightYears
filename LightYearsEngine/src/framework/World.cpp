@@ -31,9 +31,17 @@ namespace ly
 		}
 		mPendingActors.clear();
 
-		for (shared<Actor> actor : mActors)
+		for (auto iter = mActors.begin(); iter != mActors.end();)
 		{
-			actor->Tick(deltaTime);
+			if (iter->get()->IsPendingDestory())
+			{
+				iter = mActors.erase(iter);
+			}
+			else
+			{
+				iter->get()->Tick(deltaTime);
+				++iter;
+			}
 		}
 
 		Tick(deltaTime);
@@ -43,10 +51,12 @@ namespace ly
 	{
 
 	}
+
 	void World::BeginPlay()
 	{
 		LOG("began play");
 	}
+
 	void World::Tick(float deltaTime)
 	{
 		LOG("Tick at frame rate %f", 1.f/deltaTime);
