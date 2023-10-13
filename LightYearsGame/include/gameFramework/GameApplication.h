@@ -5,6 +5,7 @@ namespace ly
 {
 	class GameApplication : public Application
 	{
-
+	public:
+		GameApplication();
 	};
 }
