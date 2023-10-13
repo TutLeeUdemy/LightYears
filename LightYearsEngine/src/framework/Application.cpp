@@ -1,5 +1,5 @@
-#include <iostream>
 #include "framework/Application.h"
+#include "framework/Core.h"
 namespace ly
 {
 	Application::Application()
@@ -33,7 +33,8 @@ namespace ly
 				TickInternal(targetDeltaTime);
 				RenderInternal();
 			}
-			std::cout << "ticking at framerate: " << 1.f / frameDeltaTime << std::endl;
+
+			LOG("ticking at framerate: %f");
 		}
 	}
 	void Application::TickInternal(float deltaTime)
