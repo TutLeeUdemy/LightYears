@@ -1,13 +1,15 @@
 #include "player/PlayerSpaceship.h"
 #include "SFML/System.hpp"
 #include "framework/MathUtility.h"
+#include "weapon/BulletShooter.h"
 
 namespace ly
 {
 	PlayerSpaceship::PlayerSpaceship(World* owningWorld, const std::string& path)
 		: Spaceship{owningWorld, path},
 		mMoveInput{},
-		mSpeed{200.f}
+		mSpeed{200.f},
+		mShooter{ new BulletShooter{this, 0.3f}}
 	{
 
 	}
@@ -17,6 +19,14 @@ namespace ly
 		Spaceship::Tick(deltaTime);
 		HandleInput();
 		ConsumeInput(deltaTime);
+	}
+
+	void PlayerSpaceship::Shoot()
+	{
+		if (mShooter)
+		{
+			mShooter->Shoot();
+		}
 	}
 
 	void PlayerSpaceship::HandleInput()
@@ -41,6 +51,11 @@ namespace ly
 
 		ClampInputOnEdge();
 		NormalizeInput();
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+		{
+			Shoot();
+		}
 	}
 	void PlayerSpaceship::NormalizeInput()
 	{
