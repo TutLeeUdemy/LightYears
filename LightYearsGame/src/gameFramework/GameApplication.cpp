@@ -1,6 +1,7 @@
 #include "gameFramework/GameApplication.h"
 #include "framework/World.h"
 #include "framework/Actor.h"
+#include "config.h"
 
 ly::Application* GetApplication()
 {
@@ -15,7 +16,7 @@ namespace ly
 		weak<World> newWorld = LoadWorld<World>();
 		newWorld.lock()->SpawnActor<Actor>();
 		actorToDestory = newWorld.lock()->SpawnActor<Actor>();
-		actorToDestory.lock()->SetTexture("D:/CompleteGameDevSeries04_Cpp/Prj/LightYears/LightYearsGame/assets/SpaceShooterRedux/PNG/playerShip1_blue.png");
+		actorToDestory.lock()->SetTexture(GetResourceDir() + "SpaceShooterRedux/PNG/playerShip1_blue.png");
 		counter = 0;
 	}
 
