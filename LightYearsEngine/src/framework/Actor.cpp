@@ -53,7 +53,7 @@ namespace ly
 		int textureWidth = mTexture->getSize().x;
 		int textureHeight = mTexture->getSize().y;
 		mSprite.setTextureRect(sf::IntRect{ sf::Vector2i{}, sf::Vector2i{textureWidth, textureHeight} });
-		CenterPivot();
+		CenterPivot(); 
 	}
 
 	void Actor::Render(sf::RenderWindow& window)
