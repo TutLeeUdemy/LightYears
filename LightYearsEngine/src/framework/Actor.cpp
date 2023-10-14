@@ -2,6 +2,7 @@
 #include "framework/Core.h"
 #include "framework/AssetManager.h"
 #include "framework/MathUtility.h"
+#include "framework/World.h"
 
 namespace ly
 {
@@ -103,6 +104,12 @@ namespace ly
 	{
 		return RotationToVector(GetActorRotation() + 90.f);
 	}
+
+	sf::Vector2u Actor::GetWindowSize() const
+	{
+		return mOwningWorld->GetWindowSize();
+	}
+
 	void Actor::CenterPivot()
 	{
 		sf::FloatRect bound = mSprite.getGlobalBounds();
