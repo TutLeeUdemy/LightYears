@@ -23,7 +23,7 @@ namespace ly
 		}
 
 		shared<sf::Texture> newTexture{new sf::Texture};
-		if (newTexture->loadFromFile(path))
+		if (newTexture->loadFromFile(mRootDirectory + path))
 		{
 			mLoadedTextureMap.insert({path, newTexture});
 			return newTexture;
@@ -48,7 +48,12 @@ namespace ly
 		}
 	}
 
-	AssetManager::AssetManager()
+	void AssetManager::SetAssetRootDirectory(const std::string& directory)
+	{
+		mRootDirectory = directory;
+	}
+
+	AssetManager::AssetManager() : mRootDirectory{}
 	{
 		
 	}
