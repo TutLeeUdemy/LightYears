@@ -9,6 +9,7 @@ namespace ly
 
 	}
 
+
 	void Spaceship::Tick(float deltaTime)
 	{
 		Actor::Tick(deltaTime);
@@ -23,5 +24,10 @@ namespace ly
 	void Spaceship::Shoot()
 	{
 
+	}
+	void Spaceship::BeginPlay()
+	{
+		Actor::BeginPlay();
+		SetEnablePhysics(true);
 	}
 }
