@@ -1,6 +1,6 @@
 #pragma once
 #include "framework/Actor.h"
-
+#include "gameplay/HealthComponent.h"
 namespace ly
 {
 	class Spaceship : public Actor
@@ -14,5 +14,6 @@ namespace ly
 		virtual void BeginPlay() override;
 	private:
 		sf::Vector2f mVelocity;
+		HealthComponent mHealthComp;
 	};
 }

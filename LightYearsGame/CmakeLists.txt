@@ -16,6 +16,9 @@ add_executable(${LIGHT_YEARS_GAME_TARGET_NAME}
 
 	${CMAKE_CURRENT_SOURCE_DIR}/include/weapon/Bullet.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/weapon/Bullet.cpp
+
+	${CMAKE_CURRENT_SOURCE_DIR}/include/gameplay/HealthComponent.h
+	${CMAKE_CURRENT_SOURCE_DIR}/src/gameplay/HealthComponent.cpp
 )
 
 target_include_directories(${LIGHT_YEARS_GAME_TARGET_NAME} PUBLIC 
