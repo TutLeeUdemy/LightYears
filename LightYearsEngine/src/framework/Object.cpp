@@ -15,6 +15,7 @@ namespace ly
 
 	void Object::Destory()
 	{
+		onDestory.Broadcast(this);
 		mIsPendingDestory = true;
 	}
 	weak<Object> Object::GetWeakRef()
