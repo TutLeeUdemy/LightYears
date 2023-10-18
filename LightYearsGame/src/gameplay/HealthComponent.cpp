@@ -34,24 +34,17 @@ namespace ly
 				HealthEmpty();
 			}
 		}
-		else
-		{
-			HealthRegen(amt);
-		}
+
+		onHealthChanged.Broadcast(amt, mHealth, mMaxHealth);
 	}
 
 	void HealthComponent::TakenDamage(float amt)
 	{
-		LOG("Took damage: %f, now health is: %f/%f", amt, mHealth, mMaxHealth);
+		onTakenDamage.Broadcast(amt, mHealth, mMaxHealth);
 	}
 
 	void HealthComponent::HealthEmpty()
 	{
-		LOG("Dead");
-	}
-
-	void HealthComponent::HealthRegen(float amt)
-	{
-		LOG("Health regened: %f, now health is: %f/%f", amt, mHealth, mMaxHealth);
+		onHealthEmpty.Broadcast();
 	}
 }
