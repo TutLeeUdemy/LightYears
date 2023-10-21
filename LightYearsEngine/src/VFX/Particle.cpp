@@ -22,7 +22,7 @@ namespace ly
 		}
 	}
 
-	void Particle::RnadomVelocity(float minSpeed, float maxSpeed)
+	void Particle::RandomVelocity(float minSpeed, float maxSpeed)
 	{
 		mVelocity = RandomUnitVector() * RandomRange(minSpeed, maxSpeed);
 	}

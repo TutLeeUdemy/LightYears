@@ -1,5 +1,7 @@
 #include "spaceship/Spaceship.h"
 #include "framework/MathUtility.h"
+#include "VFX/Explosion.h"
+
 namespace ly
 {
 	Spaceship::Spaceship(World* owningWord, const std::string& texturePath)
@@ -75,6 +77,9 @@ namespace ly
 
 	void Spaceship::Blow()
 	{
+		Explosion* exp = new Explosion();
+		exp->SpawnExplosion(GetWorld(), GetActorLocation());
 		Destory();
+		delete exp;
 	}
 }

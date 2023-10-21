@@ -9,7 +9,7 @@ namespace ly
 		Particle(World* owningWorld, const std::string& texturePath);
 		virtual void Tick(float deltaTime) override;
 		
-		void RnadomVelocity(float minSpeed, float maxSpeed);
+		void RandomVelocity(float minSpeed, float maxSpeed);
 		void RandomSize(float min, float max);
 		void RandomLifeTime(float min, float max);
 
