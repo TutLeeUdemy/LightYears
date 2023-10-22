@@ -1,5 +1,6 @@
 #include "Level/GameLevelOne.h"
 #include "Enemy/Vanguard.h"
+#include "Enemy/TwinBladeStage.h"
 #include "Enemy/VanguardStage.h"
 #include "framework/Actor.h"
 #include "framework/AssetManager.h"
@@ -24,6 +25,7 @@ namespace ly
 
 	void GameLevelOne::InitGameStages()
 	{
+		AddStage(shared<TwinBladeStage>{new TwinBladeStage{this}});
 		AddStage(shared<VanguardStage>{new VanguardStage{this}});
 	}
 }
