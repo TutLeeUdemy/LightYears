@@ -7,6 +7,7 @@
 #include "framework/TimerManager.h"
 #include "framework/World.h"
 #include "gameplay/GameStage.h"
+#include "gameplay/WaitStage.h"
 #include "player/PlayerSpaceship.h"
 
 namespace ly
@@ -25,7 +26,9 @@ namespace ly
 
 	void GameLevelOne::InitGameStages()
 	{
-		AddStage(shared<TwinBladeStage>{new TwinBladeStage{this}});
+		AddStage(shared<WaitStage>{new WaitStage{this, 5.f}});
 		AddStage(shared<VanguardStage>{new VanguardStage{this}});
+		AddStage(shared<WaitStage>{new WaitStage{this, 15.f}});
+		AddStage(shared<TwinBladeStage>{new TwinBladeStage{this}});
 	}
 }
