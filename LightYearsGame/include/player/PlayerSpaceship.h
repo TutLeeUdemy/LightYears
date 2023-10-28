@@ -3,7 +3,7 @@
 
 namespace ly
 {
-	class BulletShooter;
+	class Shooter;
 	class PlayerSpaceship : public Spaceship
 	{
 	public:
@@ -21,6 +21,6 @@ namespace ly
 		sf::Vector2f mMoveInput;
 		float mSpeed;
 
-		unique<BulletShooter> mShooter;
+		unique<Shooter> mShooter;
 	};
 }
