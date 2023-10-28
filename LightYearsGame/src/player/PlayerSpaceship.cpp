@@ -31,6 +31,11 @@ namespace ly
 		}
 	}
 
+	void PlayerSpaceship::SetShooter(unique<Shooter>&& newsShooter)
+	{
+		mShooter = std::move(newsShooter);
+	}
+
 	void PlayerSpaceship::HandleInput()
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))

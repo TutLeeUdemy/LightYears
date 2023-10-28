@@ -13,6 +13,7 @@ namespace ly
 		virtual void Shoot();
 		virtual void BeginPlay() override;
 		virtual void ApplyDamage(float amt) override;
+		HealthComponent& GetHealthComp() { return mHealthComp; }
 	private:
 		void Blink();
 
