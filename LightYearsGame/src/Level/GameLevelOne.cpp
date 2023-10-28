@@ -9,7 +9,7 @@
 #include "gameplay/GameStage.h"
 #include "gameplay/WaitStage.h"
 #include "player/PlayerSpaceship.h"
-
+#include "Enemy/Hexagon.h"
 namespace ly
 {
 	GameLevelOne::GameLevelOne(Application* owningApp)
