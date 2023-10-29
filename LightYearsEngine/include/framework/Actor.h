@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "framework/Core.h"
+#include "framework/Delegate.h"
 #include "framework/Object.h"
 class b2Body;
 
@@ -53,7 +54,7 @@ namespace ly
 
 		sf::Sprite& GetSprite() { return mSprite; }
 		const sf::Sprite& GetSprite() const { return mSprite; }
-
+		Delegate<Actor*> onActoryDestoryed;
 	private:
 		void InitiallizePhyics();
 		void UnInitializePhysics();

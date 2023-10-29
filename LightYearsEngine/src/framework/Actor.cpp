@@ -212,6 +212,7 @@ namespace ly
 	void Actor::Destory()
 	{
 		UnInitializePhysics();
+		onActoryDestoryed.Broadcast(this);
 		Object::Destory();
 	}
 

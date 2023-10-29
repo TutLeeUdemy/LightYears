@@ -25,7 +25,21 @@ namespace ly
 	void GameLevelOne::BeginPlay()
 	{
 		Player newPlayer = PlayerManager::Get().CreateNewPlayer();
-		newPlayer.SpawnSpaceship(this);
+		mPlayerSpaceship = newPlayer.SpawnSpaceship(this);
+		mPlayerSpaceship.lock()->onActoryDestoryed.BindAction(GetWeakRef(), &GameLevelOne::PlayerSpaceshipDestroyed);
+	}
+
+	void GameLevelOne::PlayerSpaceshipDestroyed(Actor* destoryedPlayerSpaceship)
+	{
+		mPlayerSpaceship = PlayerManager::Get().GetPlayer()->SpawnSpaceship(this);
+		if (!mPlayerSpaceship.expired())
+		{
+			mPlayerSpaceship.lock()->onActoryDestoryed.BindAction(GetWeakRef(), &GameLevelOne::PlayerSpaceshipDestroyed);
+		}
+		else
+		{
+			GameOver();
+		}
 	}
 
 	void GameLevelOne::InitGameStages()
@@ -40,5 +54,10 @@ namespace ly
 		
 		AddStage(shared<WaitStage>{new WaitStage{this, 15.f}});
 		AddStage(shared<HexagonStage>{new HexagonStage{ this }});
+	}
+
+	void GameLevelOne::GameOver()
+	{
+		LOG("Game Over! ========================================================");
 	}
 }
