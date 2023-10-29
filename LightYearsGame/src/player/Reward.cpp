@@ -25,11 +25,12 @@ namespace ly
 
 	void Reward::OnActorBeginOverlap(Actor* otherActor)
 	{
-		//TODO: clean up casting.
-		PlayerSpaceship* playerSpaceship = static_cast<PlayerSpaceship*>(otherActor);
+		//TODO: clean up casting. 
+		PlayerSpaceship* playerSpaceship = dynamic_cast<PlayerSpaceship*>(otherActor);
 		if (playerSpaceship != nullptr && !playerSpaceship->IsPendingDestory())
 		{
 			mRewardFunc(playerSpaceship);
+			Destory();
 		}
 	}
 	weak<Reward> CreateHealthReward(World* world)
