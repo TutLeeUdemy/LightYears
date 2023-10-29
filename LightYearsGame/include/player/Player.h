@@ -17,7 +17,7 @@ namespace ly
 		void AddLifeCount(unsigned int count);
 		int GetLifeCount() const { return mLifeCount; }
 		
-		int AddScore(unsigned int amt);
+		void AddScore(unsigned int amt);
 		int GetScore() const { return mScore; }
 
 		Delegate<int> onLifeChange;
