@@ -14,8 +14,11 @@ namespace ly
 		weak<WorldType> LoadWorld();
 
 		sf::Vector2u GetWindowSize() const;
+		sf::RenderWindow& GetWindow() { return mWindow; }
+		const sf::RenderWindow& GetWindow() const { return mWindow; }
 
 	private:
+		bool DispathEvent(const sf::Event& event);
 		void TickInternal(float deltaTime);
 		void RenderInternal();
 
@@ -26,7 +29,7 @@ namespace ly
 		float mTargetFrameRate;
 		sf::Clock mTickClock;
 	
-		shared<World> currentWorld;
+		shared<World> mCurrentWorld;
 		sf::Clock mCleanCycleClock;
 		float mCleanCycleIterval;
 	};
@@ -35,8 +38,8 @@ namespace ly
 	weak<WorldType> Application::LoadWorld()
 	{
 		shared<WorldType> newWorld{ new WorldType{this} };
-		currentWorld = newWorld;
-		currentWorld->BeginPlayInternal();
+		mCurrentWorld = newWorld;
+		mCurrentWorld->BeginPlayInternal();
 		return newWorld;
 	}
 }

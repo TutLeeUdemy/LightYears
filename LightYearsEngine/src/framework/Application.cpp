@@ -12,7 +12,7 @@ namespace ly
 		: mWindow{ sf::VideoMode(windowWidth, windowHeight),  title, style},
 		mTargetFrameRate{ 60.f },
 		mTickClock{},
-		currentWorld{ nullptr },
+		mCurrentWorld{ nullptr },
 		mCleanCycleClock{},
 		mCleanCycleIterval{2.f}
 	{
@@ -33,6 +33,10 @@ namespace ly
 				{
 					mWindow.close();
 				}
+				else
+				{
+					DispathEvent(windowEvent);
+				}
 			}
 			float frameDeltaTime = mTickClock.restart().asSeconds();
 			accumulatedTime += frameDeltaTime;
@@ -48,13 +52,22 @@ namespace ly
 	{
 		return mWindow.getSize();
 	}
+
+	bool Application::DispathEvent(const sf::Event& event)
+	{
+		if (mCurrentWorld)
+		{
+			return mCurrentWorld->DispathEvent(event);
+		}
+	}
+	
 	void Application::TickInternal(float deltaTime)
 	{
 		Tick(deltaTime);
 	
-		if (currentWorld)
+		if (mCurrentWorld)
 		{
-			currentWorld->TickInternal(deltaTime);
+			mCurrentWorld->TickInternal(deltaTime);
 		}
 
 		TimerManager::Get().UpdateTimer(deltaTime);
@@ -65,9 +78,9 @@ namespace ly
 		{
 			mCleanCycleClock.restart();
 			AssetManager::Get().CleanCycle();
-			if (currentWorld)
+			if (mCurrentWorld)
 			{
-				currentWorld->CleanCycle();
+				mCurrentWorld->CleanCycle();
 			}
 		}
 	}
@@ -83,9 +96,9 @@ namespace ly
 
 	void Application::Render()
 	{
-		if (currentWorld)
+		if (mCurrentWorld)
 		{
-			currentWorld->Render(mWindow);
+			mCurrentWorld->Render(mWindow);
 		}
 	}
 

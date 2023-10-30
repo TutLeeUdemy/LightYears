@@ -2,7 +2,7 @@
 
 namespace ly
 {
-	void HUD::NativeInit(sf::RenderWindow& windowRef)
+	void HUD::NativeInit(const sf::RenderWindow& windowRef)
 	{
 		if (!mAlreadyInit)
 		{
