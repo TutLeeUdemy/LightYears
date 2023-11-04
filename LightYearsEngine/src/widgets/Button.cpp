@@ -51,7 +51,7 @@ namespace ly
 		CenterText();
 	}
 
-	void Button::SetTextCharacterSize(unsigned int characterSize)
+	void Button::SetTextSize(unsigned int characterSize)
 	{
 		mButtonText.setCharacterSize(characterSize);
 		CenterText();

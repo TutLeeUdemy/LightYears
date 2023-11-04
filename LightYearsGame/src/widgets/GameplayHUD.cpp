@@ -64,7 +64,7 @@ namespace ly
 		mPlayerScoreText.SetWidgetLocation(nextWidgetPos);
 
 		TestButton.SetWidgetLocation({windowSize.x/2.f, windowSize.y/2.f});
-		TestButton.SetTextCharacterSize(20);
+		TestButton.SetTextSize(20);
 		TestButton.onButtonClicked.BindAction(GetWeakRef(), &GameplayHUD::TestButtonClick);
 
 		RefreshHealthBar();
