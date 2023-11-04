@@ -3,13 +3,14 @@
 #include "player/PlayerSpaceship.h"
 #include "weapon/ThreeWayShooter.h"
 #include "weapon/FrontalWiper.h"
+#include "player/PlayerManager.h"
 
 namespace ly
 {
 	Reward::Reward(World* world, const std::string& texturePath, RewardFunc rewardFunc, float speed)
-		: Actor{world, texturePath}, 
-		mRewardFunc{rewardFunc},
-		mSpeed{speed}
+		: Actor{ world, texturePath },
+		mRewardFunc{ rewardFunc },
+		mSpeed{ speed }
 	{
 	}
 	void Reward::BeginPlay()
@@ -20,19 +21,28 @@ namespace ly
 	void Reward::Tick(float deltaTime)
 	{
 		Actor::Tick(deltaTime);
-		AddActorLocationOffset({0.f, mSpeed * deltaTime});
+		AddActorLocationOffset({ 0.f, mSpeed * deltaTime });
 	}
 
 	void Reward::OnActorBeginOverlap(Actor* otherActor)
 	{
-		//TODO: clean up casting. 
-		PlayerSpaceship* playerSpaceship = dynamic_cast<PlayerSpaceship*>(otherActor);
-		if (playerSpaceship != nullptr && !playerSpaceship->IsPendingDestory())
+		if (!otherActor || otherActor->IsPendingDestory())
+			return;
+
+		if (!PlayerManager::Get().GetPlayer())
+			return;
+
+		weak<PlayerSpaceship> playerSpaceship = PlayerManager::Get().GetPlayer()->GetCurrentSpaceship();
+		if (playerSpaceship.expired() || playerSpaceship.lock()->IsPendingDestory())
+			return;
+
+		if (playerSpaceship.lock()->GetUniqueID() == otherActor->GetUniqueID())
 		{
-			mRewardFunc(playerSpaceship);
+			mRewardFunc(playerSpaceship.lock().get());
 			Destory();
 		}
 	}
+
 	weak<Reward> CreateHealthReward(World* world)
 	{
 		return CreateReward(world, "SpaceShooterRedux/PNG/pickups/pill_green.png", RewardHealth);
