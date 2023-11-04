@@ -2,6 +2,8 @@
 #include "widgets/HUD.h"
 #include "widgets/TextWidget.h"
 #include "widgets/ValueGuage.h"
+#include "widgets/ImageWidget.h"
+
 namespace ly
 {
 	class Actor;
@@ -20,8 +22,12 @@ namespace ly
 		void PlayerSpaceshipDestoryed(Actor* actor);
 		TextWidget mFramerateText;
 		ValueGuage mPlayerHealthBar;
+		ImageWidget mPlayerLifeIcon;
+
 		sf::Color mHealthyHealthBarColor;
 		sf::Color mCriticalHealthBarColor;
 		float mCriticalThreshold;
+
+		float mWidgetSpaceing;
 	};
 }
