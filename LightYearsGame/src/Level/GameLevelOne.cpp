@@ -14,6 +14,8 @@
 #include "player/PlayerSpaceship.h"
 #include "Enemy/Hexagon.h"
 #include "player/PlayerManager.h"
+#include "widgets/GameplayHUD.h"
+
 namespace ly
 {
 	GameLevelOne::GameLevelOne(Application* owningApp)
@@ -27,6 +29,7 @@ namespace ly
 		Player newPlayer = PlayerManager::Get().CreateNewPlayer();
 		mPlayerSpaceship = newPlayer.SpawnSpaceship(this);
 		mPlayerSpaceship.lock()->onActoryDestoryed.BindAction(GetWeakRef(), &GameLevelOne::PlayerSpaceshipDestroyed);
+		mGameplayHUD = SpawnHUD<GameplayHUD>();
 	}
 
 	void GameLevelOne::PlayerSpaceshipDestroyed(Actor* destoryedPlayerSpaceship)

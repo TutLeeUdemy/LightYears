@@ -50,10 +50,13 @@ namespace ly
 
 		Tick(deltaTime);
 
-		if (mHUD && !mHUD->HasInit())
+		if (mHUD)
 		{
-			mHUD->NativeInit(mOwningApp->GetWindow());
+			if(!mHUD->HasInit())
+				mHUD->NativeInit(mOwningApp->GetWindow());
+			mHUD->Tick(deltaTime);
 		}
+
 	}
 
 	void World::Render(sf::RenderWindow& window)
@@ -102,6 +105,7 @@ namespace ly
 		{
 			return mHUD->HandleEvent(event);
 		}
+		return false;
 	}
 
 	void World::BeginPlay()

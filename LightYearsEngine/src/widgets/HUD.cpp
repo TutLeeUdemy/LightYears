@@ -25,4 +25,9 @@ namespace ly
 	{
 
 	}
+
+	void HUD::Tick(float deltaTime)
+	{
+
+	}
 }
