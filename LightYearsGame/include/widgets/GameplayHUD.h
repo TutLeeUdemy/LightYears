@@ -32,12 +32,6 @@ namespace ly
 		ImageWidget mPlayerScoreIcon;
 		TextWidget mPlayerScoreText;
 
-		//TODO: remove
-		void TestButtonClick();
-		//TODO: remove
-		Button TestButton;
-
-
 		sf::Color mHealthyHealthBarColor;
 		sf::Color mCriticalHealthBarColor;
 		float mCriticalThreshold;
