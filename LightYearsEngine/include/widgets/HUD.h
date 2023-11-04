@@ -16,7 +16,7 @@ namespace ly
 		HUD();
 		
 	private:
-		virtual void Init(sf::RenderWindow& windowRef);
+		virtual void Init(const sf::RenderWindow& windowRef);
 		bool mAlreadyInit;
 	};
 }
