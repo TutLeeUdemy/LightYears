@@ -18,11 +18,14 @@ namespace ly
 	private:
 		virtual void Init(const sf::RenderWindow& windowRef) override;
 		void RefreshHealthBar();
+		void ConnectPlayerLifeCount();
 		void PlayerHealthUpdated(float amt, float currentHealth, float maxHealth);
+		void PlayerLifeCountUpdated(int amt);
 		void PlayerSpaceshipDestoryed(Actor* actor);
 		TextWidget mFramerateText;
 		ValueGuage mPlayerHealthBar;
 		ImageWidget mPlayerLifeIcon;
+		TextWidget mPlayerLifeText;
 
 		sf::Color mHealthyHealthBarColor;
 		sf::Color mCriticalHealthBarColor;

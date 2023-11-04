@@ -29,4 +29,9 @@ namespace ly
 	{
 		winowRef.draw(mSprite);
 	}
+
+	sf::FloatRect ImageWidget::GetBound() const
+	{
+		return mSprite.getGlobalBounds();
+	}
 }
