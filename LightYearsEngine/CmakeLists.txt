@@ -48,6 +48,9 @@ add_library(${LIGHT_YEARS_ENGINE_TARGET_NAME} STATIC
 	${CMAKE_CURRENT_SOURCE_DIR}/include/widgets/TextWidget.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/TextWidget.cpp
 
+	${CMAKE_CURRENT_SOURCE_DIR}/include/widgets/ValueGuage.h
+	${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/ValueGuage.cpp
+
 	${CMAKE_CURRENT_SOURCE_DIR}/include/EntryPoint.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
 )
