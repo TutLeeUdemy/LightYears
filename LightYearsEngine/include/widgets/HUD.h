@@ -11,7 +11,7 @@ namespace ly
 		virtual void Draw( sf::RenderWindow& windowRef) = 0;
 		void NativeInit(const sf::RenderWindow& windowRef);
 		bool HasInit() { return mAlreadyInit; }
-		virtual bool HandleEvent(const sf::Event& evet);
+		virtual bool HandleEvent(const sf::Event& event);
 		virtual void Tick(float deltaTime);
 	protected:
 		HUD();

@@ -11,7 +11,7 @@ namespace ly
 		}
 	}
 
-	bool HUD::HandleEvent(const sf::Event& evet)
+	bool HUD::HandleEvent(const sf::Event& event)
 	{
 		return false;
 	}
