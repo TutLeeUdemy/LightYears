@@ -4,6 +4,7 @@
 #include "widgets/ValueGuage.h"
 namespace ly
 {
+	class Actor;
 	class GameplayHUD : public HUD
 	{
 	public:
@@ -14,6 +15,9 @@ namespace ly
 		
 	private:
 		virtual void Init(const sf::RenderWindow& windowRef) override;
+		void RefreshHealthBar();
+		void PlayerHealthUpdated(float amt, float currentHealth, float maxHealth);
+		void PlayerSpaceshipDestoryed(Actor* actor);
 		TextWidget mFramerateText;
 		ValueGuage mPlayerHealthBar;
 	};

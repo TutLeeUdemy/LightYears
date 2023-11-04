@@ -17,6 +17,7 @@ namespace ly
 	}
 	void ValueGuage::UpdateValue(float value, float maxValue)
 	{
+		LOG("player health is now: %f", value);
 		if (maxValue == 0) return;
 		mPercent = value / maxValue;
 		std::string displayStr = std::to_string((int)value) + "/" + std::to_string((int)maxValue);
