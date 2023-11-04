@@ -15,7 +15,8 @@ namespace ly
 		mHealthyHealthBarColor{128,255,128,255},
 		mCriticalHealthBarColor{255,0,0,255},
 		mCriticalThreshold{0.3},
-		mWidgetSpaceing{10.f}
+		mWidgetSpaceing{10.f},
+		TestButton{}
 	{
 		mFramerateText.SetTextSize(30);
 		mPlayerLifeText.SetTextSize(20);
@@ -29,6 +30,7 @@ namespace ly
 		mPlayerLifeText.NativeDraw(windowRef);
 		mPlayerScoreIcon.NativeDraw(windowRef);
 		mPlayerScoreText.NativeDraw(windowRef);
+		TestButton.NativeDraw(windowRef);
 	}
 
 	void GameplayHUD::Tick(float deltaTime)
@@ -40,21 +42,23 @@ namespace ly
 	void GameplayHUD::Init(const sf::RenderWindow& windowRef)
 	{
 		auto windowSize = windowRef.getSize();
-		mPlayerHealthBar.SetWidgetLocation(sf::Vector2f{20.f, windowSize.y - 50.f});
+		mPlayerHealthBar.SetWidgetLocation(sf::Vector2f{ 20.f, windowSize.y - 50.f });
 
 		sf::Vector2f nextWidgetPos = mPlayerHealthBar.GetWidgetLocation();
-		
+
 		nextWidgetPos += sf::Vector2f{ mPlayerHealthBar.GetBound().width + mWidgetSpaceing, 0.f };
 		mPlayerLifeIcon.SetWidgetLocation(nextWidgetPos);
-		
+
 		nextWidgetPos += sf::Vector2f{ mPlayerLifeIcon.GetBound().width + mWidgetSpaceing, 0.f };
 		mPlayerLifeText.SetWidgetLocation(nextWidgetPos);
-		
+
 		nextWidgetPos += sf::Vector2f{ mPlayerLifeText.GetBound().width + mWidgetSpaceing * 4, -2.f };
 		mPlayerScoreIcon.SetWidgetLocation(nextWidgetPos);
 
 		nextWidgetPos += sf::Vector2f{ mPlayerScoreIcon.GetBound().width + mWidgetSpaceing, 0.f };
 		mPlayerScoreText.SetWidgetLocation(nextWidgetPos);
+
+		TestButton.SetWidgetLocation({windowSize.x/2.f, windowSize.y/2.f});
 
 		RefreshHealthBar();
 		ConnectPlayerStatus();

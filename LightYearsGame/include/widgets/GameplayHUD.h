@@ -3,6 +3,7 @@
 #include "widgets/TextWidget.h"
 #include "widgets/ValueGuage.h"
 #include "widgets/ImageWidget.h"
+#include "widgets/Button.h"
 
 namespace ly
 {
@@ -31,6 +32,8 @@ namespace ly
 		ImageWidget mPlayerScoreIcon;
 		TextWidget mPlayerScoreText;
 
+		//TODO: remove
+		Button TestButton;
 
 		sf::Color mHealthyHealthBarColor;
 		sf::Color mCriticalHealthBarColor;
