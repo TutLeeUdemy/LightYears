@@ -15,11 +15,20 @@ namespace ly
 		mHealthyHealthBarColor{128,255,128,255},
 		mCriticalHealthBarColor{255,0,0,255},
 		mCriticalThreshold{0.3},
-		mWidgetSpaceing{10.f}
+		mWidgetSpaceing{10.f},
+		mWinLoseText{""},
+		mFinalScoreText{""},
+		mRestartButton{"Restart"},
+		mQuitButton{"Quit"}
 	{
 		mFramerateText.SetTextSize(30);
 		mPlayerLifeText.SetTextSize(20);
 		mPlayerScoreText.SetTextSize(20);
+
+		mWinLoseText.SetVisiblity(false);
+		mFinalScoreText.SetVisiblity(false);
+		mRestartButton.SetVisiblity(false);
+		mQuitButton.SetVisiblity(false);
 	}
 	void GameplayHUD::Draw(sf::RenderWindow& windowRef)
 	{
@@ -29,6 +38,11 @@ namespace ly
 		mPlayerLifeText.NativeDraw(windowRef);
 		mPlayerScoreIcon.NativeDraw(windowRef);
 		mPlayerScoreText.NativeDraw(windowRef);
+
+		mWinLoseText.NativeDraw(windowRef);
+		mFinalScoreText.NativeDraw(windowRef);
+		mRestartButton.NativeDraw(windowRef);
+		mQuitButton.NativeDraw(windowRef);
 	}
 
 	void GameplayHUD::Tick(float deltaTime)
@@ -40,6 +54,9 @@ namespace ly
 
 	bool GameplayHUD::HandleEvent(const sf::Event& event)
 	{
+		if (mRestartButton.HandleEvent(event)) return true;
+		if (mQuitButton.HandleEvent(event)) return true;
+
 		return HUD::HandleEvent(event);
 	}
 	void GameplayHUD::Init(const sf::RenderWindow& windowRef)
@@ -63,6 +80,13 @@ namespace ly
 
 		RefreshHealthBar();
 		ConnectPlayerStatus();
+
+		mWinLoseText.SetWidgetLocation({ windowSize.x / 2.f - mWinLoseText.GetBound().width / 2.f, 100.f });
+
+		mRestartButton.SetWidgetLocation({ windowSize.x / 2.f - mRestartButton.GetBound().width / 2.f, windowSize.y / 2.f });
+		mQuitButton.SetWidgetLocation(mRestartButton.GetWidgetLocation() + sf::Vector2f{ 0.f, 50.f });
+		mRestartButton.onButtonClicked.BindAction(GetWeakRef(), &GameplayHUD::RestartButtonClicked);
+		mQuitButton.onButtonClicked.BindAction(GetWeakRef(), &GameplayHUD::QuitButtonClicked);
 	}
 	void GameplayHUD::PlayerHealthUpdated(float amt, float currentHealth, float maxHealth)
 	{
@@ -117,5 +141,32 @@ namespace ly
 	void GameplayHUD::PlayerSpaceshipDestoryed(Actor* actor)
 	{
 		RefreshHealthBar();
+	}
+
+	void GameplayHUD::RestartButtonClicked()
+	{
+		onRestartBtnClicked.Broadcast();
+	}
+
+	void GameplayHUD::QuitButtonClicked()
+	{
+		onQuitBtnClicked.Broadcast();
+	}
+
+	void GameplayHUD::GameFinished(bool playerWon)
+	{
+		mWinLoseText.SetVisiblity(true);
+		mFinalScoreText.SetVisiblity(true);
+		mRestartButton.SetVisiblity(true);
+		mQuitButton.SetVisiblity(true);
+
+		if (playerWon)
+		{
+			mWinLoseText.SetString("You Win!");
+		}
+		else
+		{
+			mWinLoseText.SetString("You Lose!");
+		}
 	}
 }

@@ -10,12 +10,15 @@ namespace ly
 	public:
 		GameLevelOne(Application* owningApp);
 	private:
+		virtual void AllGameStageFinished() override;
 		virtual void BeginPlay() override;
 		weak<PlayerSpaceship> mPlayerSpaceship;
 		weak<GameplayHUD> mGameplayHUD;
 		void PlayerSpaceshipDestroyed(Actor* destoryedPlayerSpaceship);
 		TimerHandle timerHandle_Test;
 		virtual void InitGameStages() override;
+		void QuitGame();
+		void Restart();
 		void GameOver();
 	};
 }
