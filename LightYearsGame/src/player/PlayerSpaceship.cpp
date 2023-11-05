@@ -11,7 +11,7 @@ namespace ly
 		: Spaceship{owningWorld, path},
 		mMoveInput{},
 		mSpeed{200.f},
-		mShooter{ new BulletShooter{this, 0.1f, {50.f, 0.f}} },
+		mShooter{ new ThreeWayShooter{this, 1.f, {50.f, 0.f}} },
 		mInvulnerableTime{2.f},
 		mInvulnerable{true},
 		mInvulnerableFlashInterval{0.5f},
@@ -19,6 +19,7 @@ namespace ly
 		mInvulerableFlashDir{1}
 	{
 		SetTeamID(1);
+		mShooter->SetCurrentLevel(4);
 	}
 
 	void PlayerSpaceship::Tick(float deltaTime)

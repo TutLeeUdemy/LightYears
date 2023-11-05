@@ -15,6 +15,7 @@ namespace ly
 		virtual void BeginPlay() override;
 	private:
 		float mSpeed;
+		float mBaseSpeed;
 		float mSwitchDistanceToEdge;
 		void CheckMove();
 
