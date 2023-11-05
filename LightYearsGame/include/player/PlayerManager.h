@@ -10,6 +10,7 @@ namespace ly
 		Player* GetPlayer(int playerIndex = 0);
 		const Player* GetPlayer(int playerIndex = 0) const;
 		static PlayerManager& Get();
+		void Reset();
 	protected:
 		PlayerManager();
 		

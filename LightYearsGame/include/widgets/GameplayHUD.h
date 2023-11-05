@@ -48,6 +48,7 @@ namespace ly
 		TextWidget mFinalScoreText;
 		Button mRestartButton;
 		Button mQuitButton;
-	
+
+		sf::Vector2u mWindowSize;
 	};
 }

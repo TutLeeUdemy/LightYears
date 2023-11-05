@@ -19,7 +19,8 @@ namespace ly
 		mWinLoseText{""},
 		mFinalScoreText{""},
 		mRestartButton{"Restart"},
-		mQuitButton{"Quit"}
+		mQuitButton{"Quit"},
+		mWindowSize{}
 	{
 		mFramerateText.SetTextSize(30);
 		mPlayerLifeText.SetTextSize(20);
@@ -32,6 +33,7 @@ namespace ly
 	}
 	void GameplayHUD::Draw(sf::RenderWindow& windowRef)
 	{
+		mWindowSize = windowRef.getSize();
 		mFramerateText.NativeDraw(windowRef);
 		mPlayerHealthBar.NativeDraw(windowRef);
 		mPlayerLifeIcon.NativeDraw(windowRef);
@@ -62,6 +64,7 @@ namespace ly
 	void GameplayHUD::Init(const sf::RenderWindow& windowRef)
 	{
 		auto windowSize = windowRef.getSize();
+		mWindowSize = windowSize;
 		mPlayerHealthBar.SetWidgetLocation(sf::Vector2f{ 20.f, windowSize.y - 50.f });
 
 		sf::Vector2f nextWidgetPos = mPlayerHealthBar.GetWidgetLocation();
@@ -80,8 +83,13 @@ namespace ly
 
 		RefreshHealthBar();
 		ConnectPlayerStatus();
-
+		mWinLoseText.SetTextSize(40);
+		//mWinLoseText.SetString("You Win!");
 		mWinLoseText.SetWidgetLocation({ windowSize.x / 2.f - mWinLoseText.GetBound().width / 2.f, 100.f });
+		
+		//mFinalScoreText.SetString("score: " + std::to_string(100));
+		mFinalScoreText.SetTextSize(40);
+		mFinalScoreText.SetWidgetLocation({ windowSize.x / 2.f - mFinalScoreText.GetBound().width / 2.f, 200.f });
 
 		mRestartButton.SetWidgetLocation({ windowSize.x / 2.f - mRestartButton.GetBound().width / 2.f, windowSize.y / 2.f });
 		mQuitButton.SetWidgetLocation(mRestartButton.GetWidgetLocation() + sf::Vector2f{ 0.f, 50.f });
@@ -159,14 +167,19 @@ namespace ly
 		mFinalScoreText.SetVisiblity(true);
 		mRestartButton.SetVisiblity(true);
 		mQuitButton.SetVisiblity(true);
-
+		
+		int score = PlayerManager::Get().GetPlayer()->GetScore();
+		mFinalScoreText.SetString("score: " + std::to_string(score));
 		if (playerWon)
 		{
 			mWinLoseText.SetString("You Win!");
+
 		}
 		else
 		{
 			mWinLoseText.SetString("You Lose!");
 		}
+		mWinLoseText.SetWidgetLocation({ mWindowSize.x / 2.f - mWinLoseText.GetBound().width / 2.f, 100.f });
+		mFinalScoreText.SetWidgetLocation({ mWindowSize.x / 2.f - mFinalScoreText.GetBound().width / 2.f, 200.f });
 	}
 }
