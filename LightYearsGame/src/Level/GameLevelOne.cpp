@@ -8,6 +8,7 @@
 #include "framework/Actor.h"
 #include "framework/Application.h"
 #include "framework/AssetManager.h"
+#include "framework/BackdropActor.h"
 #include "framework/TimerManager.h"
 #include "framework/World.h"
 #include "gameplay/GameStage.h"
@@ -35,6 +36,8 @@ namespace ly
 
 	void GameLevelOne::BeginPlay()
 	{
+		SpawnCosmetics();
+
 		Player& newPlayer = PlayerManager::Get().CreateNewPlayer();
 		mPlayerSpaceship = newPlayer.SpawnSpaceship(this);
 		mPlayerSpaceship.lock()->onActoryDestoryed.BindAction(GetWeakRef(), &GameLevelOne::PlayerSpaceshipDestroyed);
@@ -91,5 +94,10 @@ namespace ly
 	void GameLevelOne::GameOver()
 	{
 		mGameplayHUD.lock()->GameFinished(false);
+	}
+
+	void GameLevelOne::SpawnCosmetics()
+	{
+		auto backdropActor = SpawnActor<BackdropActor>("SpaceShooterRedux/Backgrounds/darkPurple.png");
 	}
 }

@@ -118,6 +118,11 @@ namespace ly
 		return mOwningWorld->GetWindowSize();
 	}
 
+	void Actor::SetTextureRepeated(bool repeated)
+	{
+		mTexture->setRepeated(repeated);
+	}
+
 	void Actor::InitiallizePhyics()
 	{
 		if (!mPhysicBody)
