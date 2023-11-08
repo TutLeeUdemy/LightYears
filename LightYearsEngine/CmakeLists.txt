@@ -11,6 +11,9 @@ add_library(${LIGHT_YEARS_ENGINE_TARGET_NAME} STATIC
 	${CMAKE_CURRENT_SOURCE_DIR}/include/framework/BackdropActor.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/BackdropActor.cpp
 
+	${CMAKE_CURRENT_SOURCE_DIR}/include/framework/BackgroundLayer.h
+	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/BackgroundLayer.cpp
+
 	${CMAKE_CURRENT_SOURCE_DIR}/include/framework/Object.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Object.cpp
 
