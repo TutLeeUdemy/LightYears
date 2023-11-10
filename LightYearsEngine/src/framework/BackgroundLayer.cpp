@@ -135,7 +135,11 @@ namespace ly
 			sprite.setPosition(sprite.getPosition() + vel * deltaTime);
 			if (IsSpriteOffScreen(sprite))
 			{
+				RandomSpriteTexture(sprite);
 				RandomSpriteTransform(sprite);
+				float velX = RandomRange(mMinVelocity.x, mMaxVelocity.x);
+				float velY = RandomRange(mMinVelocity.y, mMaxVelocity.y);
+				mVelocities[i] = sf::Vector2f{ velX, velY };
 			}
 		}
 	}
