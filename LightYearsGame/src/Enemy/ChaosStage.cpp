@@ -6,6 +6,8 @@
 
 #include "framework/MathUtility.h"
 #include "framework/World.h"
+
+#include "weapon/BulletShooter.h"
 namespace ly
 {
 	ChaosStage::ChaosStage(World* world)
