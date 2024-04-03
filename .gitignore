@@ -2,3 +2,5 @@
 build/
 .DS_Store
 .vscode/
+.cache/clangd/index
+.venv

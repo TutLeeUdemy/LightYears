@@ -1,7 +1,7 @@
-#include <box2D/b2_body.h>
-#include <box2D/b2_contact.h>
-#include <box2D/b2_fixture.h>
-#include <box2D/b2_polygon_shape.h>
+#include <box2d/b2_body.h>
+#include <box2d/b2_contact.h>
+#include <box2d/b2_fixture.h>
+#include <box2d/b2_polygon_shape.h>
 
 #include "framework/PhysicsSystem.h"
 #include "framework/Actor.h"
