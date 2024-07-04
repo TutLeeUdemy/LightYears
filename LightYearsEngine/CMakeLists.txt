@@ -89,7 +89,6 @@ target_link_libraries(${LIGHT_YEARS_ENGINE_TARGET_NAME} PUBLIC sfml-window)
 target_link_libraries(${LIGHT_YEARS_ENGINE_TARGET_NAME} PUBLIC sfml-system)
 target_link_libraries(${LIGHT_YEARS_ENGINE_TARGET_NAME} PUBLIC sfml-audio)
 
-set(DBOX2D_BUILD_UNIT_TESTS OFF)
 set(BOX2D_LIB_NAME Box2D)
 FetchContent_Declare(
 	${BOX2D_LIB_NAME}
