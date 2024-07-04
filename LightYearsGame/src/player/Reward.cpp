@@ -1,4 +1,4 @@
-#include "framework/world.h"
+#include "framework/World.h"
 #include "player/Reward.h"
 #include "player/PlayerSpaceship.h"
 #include "weapon/ThreeWayShooter.h"

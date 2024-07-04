@@ -34,7 +34,7 @@ add_library(${LIGHT_YEARS_ENGINE_TARGET_NAME} STATIC
 	${CMAKE_CURRENT_SOURCE_DIR}/src/VFX/Particle.cpp
 
 	${CMAKE_CURRENT_SOURCE_DIR}/include/framework/TimerManager.h
-	${CMAKE_CURRENT_SOURCE_DIR}/src/Framework/TimerManager.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/TimerManager.cpp
 
 	${CMAKE_CURRENT_SOURCE_DIR}/include/framework/Core.h
 	${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Core.cpp
@@ -89,6 +89,7 @@ target_link_libraries(${LIGHT_YEARS_ENGINE_TARGET_NAME} PUBLIC sfml-window)
 target_link_libraries(${LIGHT_YEARS_ENGINE_TARGET_NAME} PUBLIC sfml-system)
 target_link_libraries(${LIGHT_YEARS_ENGINE_TARGET_NAME} PUBLIC sfml-audio)
 
+set(DBOX2D_BUILD_UNIT_TESTS OFF)
 set(BOX2D_LIB_NAME Box2D)
 FetchContent_Declare(
 	${BOX2D_LIB_NAME}

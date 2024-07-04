@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Weapon/BulletShooter.h"
+#include "weapon/BulletShooter.h"
 
 namespace ly
 {

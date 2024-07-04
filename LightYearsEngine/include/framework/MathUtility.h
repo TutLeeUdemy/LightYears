@@ -1,4 +1,5 @@
 #pragma once
+#include <cmath>
 #include <SFML/Graphics.hpp>
 
 namespace ly
