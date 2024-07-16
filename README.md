@@ -7,6 +7,8 @@ The Game is written in ```C++``` and with the following library:
 * [SFML](https://www.sfml-dev.org/) 
 * [Box2D](https://box2d.org/)
 
+The Game Support Windows, MacOS, and Linux.
+
 ### Screen Captures
 <image src="doc/assets/capture01.png" width=200> <image src="doc/assets/capture02.png" width=200>
 <image src="doc/assets/capture03.png" width=200> <image src="doc/assets/capture04.png" width=200>
