@@ -3,7 +3,7 @@
 ### Introduction to the Game
 
 Light Years is a 2D scrolling shooter spaceship fighting game, the player controls the hero spaceship and defeat the alien invation.
-The Game is written in ```C++``` and the following library:
+The Game is written in ```C++``` and with the following library:
 * [SFML](https://www.sfml-dev.org/) 
 * [Box2D](https://box2d.org/)
 
