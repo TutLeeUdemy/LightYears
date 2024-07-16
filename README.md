@@ -15,7 +15,7 @@ The Game Support Windows, MacOS, and Linux.
 
 ### How to Build
 The project uses ```cmake``` to configure the project and dependencies. Make sure your system have ```cmake``` and ```gcc/g++``` installed:
-|Tool Chain|Version|
+|Build Tools          |Version|
 |---------------------|------|
 |cmake version:       |3.27.7|
 |C++ version:         |C++ 14|
