@@ -8,10 +8,8 @@ The Game is written in ```C++``` and the following library:
 * [Box2D](https://box2d.org/)
 
 ### Screen Captures
-<image src="doc/assets/capture01.png" width=200>
-<image src="doc/assets/capture02.png" width=200>
-<image src="doc/assets/capture03.png" width=200>
-<image src="doc/assets/capture04.png" width=200>
+<image src="doc/assets/capture01.png" width=200><image src="doc/assets/capture02.png" width=200>
+<image src="doc/assets/capture03.png" width=200><image src="doc/assets/capture04.png" width=200>
 
 ### How to Build
 The project uses ```cmake``` to configure the project and dependencies. Make sure your system have ```cmake``` and ```gcc/g++``` installed:
